@@ -13,7 +13,7 @@
     <meta property="og:locale" content="pt_BR">
 
     <!-- Favicon SVG -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%232E8B7D%22/><text x=%2250%22 y=%2262%22 font-size=%2240%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22>IA</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23184E3F%22/><text x=%2250%22 y=%2262%22 font-size=%2240%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22>IA</text></svg>">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,25 +32,27 @@
         }
 
         :root {
-            --color-primary: #2E8B7D;
-            --color-primary-dark: #216359;
-            --color-primary-light: #E8F4F1;
-            --color-secondary: #F7F5F0;
-            --color-accent: #E09F3E;
+            /* Cores extraídas da nova Logomarca oficial (logo.jpeg) */
+            --color-primary: #0093B2;
+            --color-primary-dark: #1C2D37;
+            --color-primary-medium: #007A94;
+            --color-primary-light: #E6F4F7;
+            --color-secondary: #F2F8FA;
+            --color-accent: #00B4D8;
             --color-white: #FFFFFF;
-            --color-gray-light: #F8F9FA;
-            --color-dark: #1E252B;
-            --color-text: #4A535A;
+            --color-gray-light: #F4F8FA;
+            --color-dark: #2B3036;
+            --color-text: #3E4348;
             --font-heading: 'DM Sans', sans-serif;
             --font-body: 'Manrope', sans-serif;
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
-            --shadow-soft: 0 10px 30px rgba(30, 37, 43, 0.05);
-            --shadow-medium: 0 16px 40px rgba(30, 37, 43, 0.10);
-            --shadow-btn: 0 8px 24px rgba(46, 139, 125, 0.28);
+            --shadow-soft: 0 10px 30px rgba(28, 45, 55, 0.08);
+            --shadow-medium: 0 16px 40px rgba(28, 45, 55, 0.12);
+            --shadow-btn: 0 8px 24px rgba(0, 147, 178, 0.32);
             --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
-            --header-h: 84px;
+            --header-h: 155px;
         }
 
         body {
@@ -65,7 +67,7 @@
         h1, h2, h3, h4 {
             font-family: var(--font-heading);
             font-weight: 700;
-            color: var(--color-dark);
+            color: var(--color-primary-dark);
             line-height: 1.22;
             letter-spacing: -0.02em;
         }
@@ -201,12 +203,18 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            padding: 6px 0;
         }
-        .brand-avatar {
-            width: 44px; height: 44px;
-            border-radius: 12px;
-            object-fit: cover;
-            border: 2px solid var(--color-primary);
+        .brand-logo-img {
+            height: 130px;
+            width: auto;
+            max-height: 140px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.25s var(--ease);
+        }
+        .brand-logo-img:hover {
+            transform: scale(1.03);
         }
         .logo-text {
             font-family: var(--font-heading);
@@ -215,13 +223,33 @@
             color: var(--color-dark);
             line-height: 1.1;
         }
-        .logo-text span {
-            display: block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+        .credibility { 
+            padding: 60px 0; 
+            background: var(--color-primary-dark); 
+            color: #FFFFFF; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .cred-card {
+            display: flex; align-items: center; gap: 16px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+        }
+        .cred-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.12); }
+        .cred-icon {
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: var(--color-primary);
+            color: #FFFFFF;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
         }
 
         .main-nav { display: flex; align-items: center; gap: 32px; }
@@ -319,29 +347,6 @@
             border-radius: var(--radius-md);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: var(--shadow-soft);
-        }
-
-        .credibility { padding: 60px 0; background: var(--color-white); border-bottom: 1px solid var(--color-gray-light); }
-        .credibility-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .cred-card {
-            display: flex; align-items: center; gap: 16px;
-            background: var(--color-gray-light);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            transition: transform 0.3s var(--ease);
-        }
-        .cred-card:hover { transform: translateY(-4px); }
-        .cred-icon {
-            width: 46px; height: 46px; flex-shrink: 0;
-            background: var(--color-primary-light);
-            color: var(--color-primary);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.25rem;
         }
 
         .sobre { padding: 100px 0; background: var(--color-secondary); }
@@ -629,7 +634,8 @@
         }
 
         @media (max-width: 860px) {
-            :root { --header-h: 74px; }
+            :root { --header-h: 115px; }
+            .brand-logo-img { height: 95px; max-height: 100px; }
             .main-nav {
                 position: fixed;
                 top: var(--header-h); left: 0; right: 0; bottom: 0;
@@ -655,12 +661,8 @@
 
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a href="#" class="brand">
-                <img src="igor2.jpg" alt="Igor Amorim Nutricionista" class="brand-avatar" onerror="this.onerror=null; this.src='https://placehold.co/100x100/2E8B7D/FFFFFF?text=IA';">
-                <div class="logo-text">
-                    Igor Amorim
-                    <span>Nutricionista • CRN4/24100610</span>
-                </div>
+            <a href="#" class="brand" aria-label="Igor Amorim Nutricionista">
+                <img src="logo.jpeg" alt="Igor Amorim Nutricionista Logo" class="brand-logo-img">
             </a>
 
             <nav class="main-nav" id="main-nav">
@@ -731,29 +733,29 @@
                 <div class="cred-card reveal">
                     <div class="cred-icon"><i class="fa-solid fa-id-card"></i></div>
                     <div>
-                        <strong style="color:var(--color-dark); font-size:0.95rem;">CRN4/24100610</strong>
-                        <p style="font-size:0.82rem;">Registro Ativo no CRN-4</p>
+                        <strong style="color:#FFFFFF; font-size:0.95rem; display:block;">CRN4/24100610</strong>
+                        <p style="font-size:0.82rem; color:rgba(255,255,255,0.9); margin:0;">Registro Ativo no CRN-4</p>
                     </div>
                 </div>
                 <div class="cred-card reveal reveal-delay-1">
                     <div class="cred-icon"><i class="fa-solid fa-location-dot"></i></div>
                     <div>
-                        <strong style="color:var(--color-dark); font-size:0.95rem;">Niterói Shopping</strong>
-                        <p style="font-size:0.82rem;">Centro de Niterói / RJ</p>
+                        <strong style="color:#FFFFFF; font-size:0.95rem; display:block;">Niterói Shopping</strong>
+                        <p style="font-size:0.82rem; color:rgba(255,255,255,0.9); margin:0;">Centro de Niterói / RJ</p>
                     </div>
                 </div>
                 <div class="cred-card reveal reveal-delay-2">
                     <div class="cred-icon"><i class="fa-solid fa-clock"></i></div>
                     <div>
-                        <strong style="color:var(--color-dark); font-size:0.95rem;">Horário Flexível</strong>
-                        <p style="font-size:0.82rem;">Seg a Sex até 21h30 e Sáb</p>
+                        <strong style="color:#FFFFFF; font-size:0.95rem; display:block;">Horário Flexível</strong>
+                        <p style="font-size:0.82rem; color:rgba(255,255,255,0.9); margin:0;">Seg a Sex até 21h30 e Sáb</p>
                     </div>
                 </div>
                 <div class="cred-card reveal reveal-delay-3">
                     <div class="cred-icon"><i class="fa-solid fa-laptop"></i></div>
                     <div>
-                        <strong style="color:var(--color-dark); font-size:0.95rem;">Consulta Online</strong>
-                        <p style="font-size:0.82rem;">Atendimento para todo o Brasil</p>
+                        <strong style="color:#FFFFFF; font-size:0.95rem; display:block;">Consulta Online</strong>
+                        <p style="font-size:0.82rem; color:rgba(255,255,255,0.9); margin:0;">Atendimento para todo o Brasil</p>
                     </div>
                 </div>
             </div>
@@ -1087,15 +1089,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <span class="footer-logo">Igor Amorim <span style="color:var(--color-primary); font-size:0.85rem; display:block;">NUTRICIONISTA</span></span>
+                    <!-- Logo no rodapé dentro de um card com fundo contrastante limpo -->
+                    <div style="background: #FFFFFF; padding: 18px 24px; border-radius: var(--radius-md); display: inline-block; margin-bottom: 20px; box-shadow: var(--shadow-soft);">
+                        <img src="logo.jpeg" alt="Igor Amorim Nutricionista Logo" style="height:140px; width:auto; display:block;">
+                    </div>
                     <p style="margin-bottom:12px;">Acompanhamento nutricional individualizado e baseado em evidências científicas.</p>
-                    <p><strong>CRN-4 24100610</strong></p>
+                    <p><strong style="color:var(--color-primary-light);">CRN-4 24100610</strong></p>
                 </div>
 
                 <div class="footer-col">
                     <h4>Contato e Agendamentos</h4>
                     <p><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i> WhatsApp: (21) 98704-0648</p>
-                    <p><i class="fa-solid fa-phone" style="color:var(--color-primary);"></i> Contato: (21) 98704-0648</p>
+                    <p><i class="fa-solid fa-phone" style="color:var(--color-primary-light);"></i> Contato: (21) 98704-0648</p>
                     <a href="https://wa.me/5521987040648?text=Ol%C3%A1%20Dr.%20Igor%2C%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es." target="_blank" style="color:#25D366; font-weight:700; margin-top:8px;">
                         Clique aqui para chamar no WhatsApp
                     </a>
@@ -1103,7 +1108,7 @@
 
                 <div class="footer-col">
                     <h4>Endereço do Consultório</h4>
-                    <p><i class="fa-solid fa-location-dot" style="color:var(--color-primary);"></i> Niterói Shopping</p>
+                    <p><i class="fa-solid fa-location-dot" style="color:var(--color-primary-light);"></i> Niterói Shopping</p>
                     <p>Rua da Conceição, 188, Sala 1804 (18º Andar)</p>
                     <p>Centro, Niterói - RJ | CEP: 24020-094</p>
                 </div>
